@@ -10,30 +10,20 @@ import com.qa.testbase.BaseTest;
 
 public class HomePage extends BaseTest {
 	
-	@FindBy(xpath="//img[@alt='Edmonton Public Library']")
-	WebElement image;
 	
 	@FindBy(xpath="//span[text()='Quick Links']")
-	WebElement quickLinks;
-	
-	public void homePage(){
-	PageFactory.initElements(driver,this);
-	}
-	
+	WebElement quickLinks;	
 	
 public HomePage() throws IOException {
-		super();
-		
+	PageFactory.initElements(driver,this);
 	}
 
 public String verifyHomePageTitle(){
 	return driver.getTitle();
+
+}
+public String verifyQuickLinks(){
+	return quickLinks.getText();
 }
 
-public Boolean verifyLogoPresence(){
-	return image.isDisplayed();
-}
-public Boolean verifyQuickLinks(){
-	return quickLinks.isDisplayed();
-}
 }

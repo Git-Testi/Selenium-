@@ -2,7 +2,6 @@ package com.qa.tests;
 
 import java.io.IOException;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,36 +11,45 @@ import com.qa.pages.SearchPage;
 import com.qa.testbase.BaseTest;
 
 public class SearchPageTest extends BaseTest{
+	 
 	SearchPage searchpage;
-	WebDriver driver;
 	
 public SearchPageTest() throws IOException {
 		super();
 		
+		
 			}
 @BeforeMethod
-public void setup() throws IOException{
+public void before() throws IOException{
 	initialization();
 	searchpage = new SearchPage();
+ 
 	}
+
 @Test(priority = 1)
-public void searchPageTest(){
-		String searchTitle = searchpage.verifySearchPageTitle();
-	Assert.assertEquals("Search | Edmonton Public Library | BiblioCommons", searchTitle);
-	
-}
-@Test(priority = 2)
 public void textBoxTest(){
 	Boolean text = searchpage.verifyTextBox();
 	Assert.assertTrue(text);
 }
+
+@Test(priority = 2)
+
+public void defaultTextTest1(){
+	
+	String defaultText = searchpage.verifyDefaultText1();
+	System.out.println("The text is: "+defaultText);
+	}
+
 @Test(priority = 3)
-public void sendText(){
-	String searchTitle2 = searchpage.verifySendtext();
-	Assert.assertEquals("Search | Edmonton Public Library | BiblioCommons", searchTitle2);
-}
+
+public void defaultTextTest2(){
+	
+	String defaultText = searchpage.verifyDefaultText2();
+	System.out.println("The text is: "+defaultText);
+	}
+
 @AfterMethod
-public void tearDown(){
+public void tearDown()	{
 	driver.quit();
 }
 }
